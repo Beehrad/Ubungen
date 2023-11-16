@@ -10,6 +10,9 @@ list.addEventListener("click", delet);
 
 clear.addEventListener("click", clearLocal);
 
+
+// addTodo
+
 function creatTodo() {
   let value = todo.value;
   if (value) {
@@ -27,6 +30,8 @@ function creatTodo() {
     addLocal(value);
   }
 }
+
+// Dom onload 
 
 document.addEventListener("DOMContentLoaded", domLoad);
 
@@ -47,6 +52,8 @@ function domLoad() {
   console.log(local);
 }
 
+// remove Todo
+
 function delet(e) {
   if (e.target.id === "del") {
     e.target.parentElement.parentElement.remove();
@@ -55,11 +62,15 @@ function delet(e) {
   }
 }
 
+// add Todo to Localstorage
+
 function addLocal(value) {
   let local = getFrom();
   local.push(value);
   localStorage.setItem("local", JSON.stringify(local));
 }
+
+//  Get Todos freom Localstorage
 
 function getFrom() {
   let local;
@@ -70,6 +81,8 @@ function getFrom() {
   }
   return local;
 }
+
+// Remove Todo from LocalStorage
 
 function removeFrom(e) {
   local = getFrom();
@@ -82,6 +95,7 @@ function removeFrom(e) {
   console.log(local);
 }
 
+// Clear all of Todos from Localstorage and DOM
 function clearLocal() {
   list.innerHTML = "";
   localStorage.clear();
