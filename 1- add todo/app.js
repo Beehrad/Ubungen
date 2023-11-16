@@ -7,6 +7,8 @@ const clear = document.querySelector("#clear");
 
 add.addEventListener("click", creatTodo);
 
+list.addEventListener("click", delet)
+
 
 function creatTodo() {
     let value = todo.value;
@@ -23,5 +25,15 @@ function creatTodo() {
         list.appendChild(newList);
         todo.value = "";
         addLocal(value);
+    }
+}
+
+
+
+function delet(e) {
+    if(e.target.id === 'del'){
+        e.target.parentElement.parentElement.remove()
+
+        removeFrom(e)
     }
 }
