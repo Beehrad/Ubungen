@@ -37,3 +37,19 @@ function delet(e) {
         removeFrom(e)
     }
 }
+
+function addLocal(value){
+    let local = getFrom()
+    local.push(value)
+    localStorage.setItem("local", JSON.stringify(local))
+}
+
+function getFrom(){
+    let local;
+    if(localStorage.getItem("local") === null){
+        local = []
+    }else{
+        local = JSON.parse(localStorage.getItem("local"))
+    }
+    return local
+}
