@@ -73,3 +73,16 @@ function getFrom(){
     }
     return local
 }
+
+function removeFrom(e){
+
+    local = getFrom()
+    let hadaf = e.target.parentElement.parentElement.children[1].innerText
+    if(local.includes(hadaf)){
+        let index = local.indexOf(hadaf)
+        local.splice(index , 1)
+    }
+    localStorage.setItem("local" , JSON.stringify(local))
+    console.log(local)
+
+}
