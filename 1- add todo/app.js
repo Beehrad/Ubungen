@@ -29,6 +29,26 @@ function creatTodo() {
 }
 
 
+document.addEventListener("DOMContentLoaded" , domLoad)
+
+function domLoad(){
+    let local = getFrom()
+    local.forEach(e => {
+        const newList = document.createElement("tr");
+        newList.classList.add("newtodo");
+        const newTodo = `
+        <td class="nom">1</td>
+        <td class="do">${e}</td>
+        <td class="check"><button id="check">beschäftigt</button></td>
+        <td class="del"><button id="del">löschen</button></td>
+        `;
+        newList.innerHTML = newTodo;
+        list.appendChild(newList);
+    });
+    console.log(local)
+}
+
+
 
 function delet(e) {
     if(e.target.id === 'del'){
