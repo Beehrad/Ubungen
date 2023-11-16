@@ -1,0 +1,73 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: aliceblue;
+}
+
+.container{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.addtodo input{
+    width: 300px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    margin-right: 30px;
+}
+
+.addtodo button{
+    height: 40px;
+    background-color: cornflowerblue;
+    width: 50px;
+    border-radius: 8px;
+    color: white;
+}
+
+button{
+    cursor: pointer;
+}
+
+.listtodo{
+    width: 500px;
+    background: white;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+}
+table{
+    justify-content: space-between;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+table tr{
+    display: grid;
+    grid-template-columns:0.5fr 2fr 0.7fr 0.2fr;
+    padding: 10px;
+    align-items: center;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    
+}
+
+table .check button{
+    background-color: rgb(8, 201, 104);
+    padding: 10px;
+    border-radius: 5px;
+    border: none
+}
+
+table .del button{
+    background-color: tomato;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
