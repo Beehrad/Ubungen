@@ -9,6 +9,9 @@ add.addEventListener("click", creatTodo);
 
 list.addEventListener("click", delet)
 
+clear.addEventListener("click" , clearLocal)
+
+
 
 function creatTodo() {
     let value = todo.value;
@@ -85,4 +88,10 @@ function removeFrom(e){
     localStorage.setItem("local" , JSON.stringify(local))
     console.log(local)
 
+}
+
+
+function clearLocal(){
+    list.innerHTML = ""
+    localStorage.clear()
 }
