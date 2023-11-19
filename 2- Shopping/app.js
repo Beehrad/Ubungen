@@ -1,8 +1,9 @@
 const backdrop = document.querySelector(".backdrop");
 const modal = document.querySelector(".modal");
 const card = document.querySelector(".fa-cart-shopping");
+const confirmCard = document.querySelector(".confirm")
 
-backdrop.addEventListener("click", closeModal);
+confirmCard.addEventListener("click", closeModal);
 
 card.addEventListener("click", showModal);
 
