@@ -1,4 +1,3 @@
-
 const backdrop = document.querySelector(".backdrop");
 const modal = document.querySelector(".modal");
 const card = document.querySelector(".fa-cart-shopping");
@@ -8,6 +7,7 @@ const products = document.querySelector(".products")
 confirmCard.addEventListener("click", closeModal);
 
 card.addEventListener("click", showModal);
+document.addEventListener("DOMContentLoaded", onLoad)
 
 function showModal() {
   backdrop.style.display = "flex";
@@ -19,7 +19,6 @@ function closeModal() {
   modal.style.opacity = "0";
   modal.style.transform = "translateY(-100vh)";
 }
-
 
 function onLoad(){
   let UI = ""
@@ -42,7 +41,4 @@ function onLoad(){
     });
     products.innerHTML = UI
   })
-
 }
-
-onLoad()
