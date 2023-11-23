@@ -33,7 +33,7 @@ function onLoad(){
         <h6>${e.title}</h6>
         <img src="${e.image}" alt="">
         <div>
-            <p>${e.price}</p>
+            <p>${e.price}$</p>
             <p>${e.category}</p>
         </div>
         <button class="add-to-cart">add to cart</button>
