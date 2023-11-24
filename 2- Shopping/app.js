@@ -4,6 +4,7 @@ const card = document.querySelector(".fa-cart-shopping");
 const confirmCard = document.querySelector(".confirm")
 const products = document.querySelector(".products")
 const sub = document.querySelector(".addtocart")
+const buy = document.querySelector(".cart-item")
 
 confirmCard.addEventListener("click", closeModal);
 
@@ -52,18 +53,27 @@ function addToCard(e){
   if(target.className == "addtocart"){
     let parent = target.parentElement
     product.title = parent.children[0].innerHTML
-    product.image = parent.children[1]
+    product.image = parent.children[1].src
     let price = Number(parent.children[2].children[0].textContent.split("$")[0])
     product.price = price
-
-    return product
   }
-  
+
+  let korb = document.createElement("div")
+  korb.classList.add("cart-item")
+  korb.innerHTML = `
+  <div>
+  <span><img src="${product.image}" alt=""></span>
+  <div class="cart-des">
+      <h4>${product.title}</h4>
+      <h5>${product.price}$</h5>
+  </div>
+  <div class="counter">
+      <span><i class="fa-solid fa-chevron-up"></i></span>
+      <p>1</p> 
+      <span><i class="fa-solid fa-chevron-down"></i></span>       
+  </div>
+  <span><i class="fa-solid fa-trash"></i></span>
+  </div>
+  `
+  buy.appendChild(korb)
 }
-
-// function addToModal(){
-//   let product = addToCard(e)
-//   console.log(product)
-// }
-
-// addToModal()

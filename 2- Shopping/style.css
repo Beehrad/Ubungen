@@ -134,6 +134,7 @@ section >.container >.products >.item> button{
 .modal{
     width: 300px;
     min-height: 200px;
+    height: fit-content;
     position: absolute;
     background-color: white;
     margin-top: -210px;
@@ -150,12 +151,18 @@ section >.container >.products >.item> button{
 }
 
 .cart-item{
-    display: flex;
+    /* display: flex; */
     width: 100%;
     margin-top: 30px;
     justify-content: space-around;
     align-items: center;
 }
+.cart-item >div{
+    display: flex;
+    align-items: center;
+}
+
+
 
 .cart-des{
     display: flex;
