@@ -51,11 +51,19 @@ function addToCard(e){
   let product = {}
   if(target.className == "addtocart"){
     let parent = target.parentElement
-    console.log(parent.children[2].children[0].textContent.split("$")[0])
     product.title = parent.children[0].innerHTML
     product.image = parent.children[1]
-    product.price = parent.children[2].children[0].textContent.split("$")[0]
+    let price = Number(parent.children[2].children[0].textContent.split("$")[0])
+    product.price = price
 
     return product
   }
+  
 }
+
+// function addToModal(){
+//   let product = addToCard(e)
+//   console.log(product)
+// }
+
+// addToModal()
