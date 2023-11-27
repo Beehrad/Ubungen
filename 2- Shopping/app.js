@@ -12,7 +12,6 @@ backdrop.addEventListener("click", closeModal);
 
 card.addEventListener("click", showModal);
 document.addEventListener("DOMContentLoaded", onLoad)
-document.addEventListener("DOMContentLoaded" , addToModal)
 products.addEventListener("click" , addToCard)
 
 function showModal() {
@@ -56,6 +55,7 @@ function addToCard(e){
     let id = parent.id
 
     addToLocal(id)
+    addToModal()
   }
 }
 
@@ -63,9 +63,11 @@ function addToLocal(id){
   let product = getLocal()
   if(!product.includes(id)){
   product.push(id)
-  }
-  localStorage.setItem("product" , JSON.stringify(product))
+
 }
+localStorage.setItem("product" , JSON.stringify(product))
+}
+
 
 function getLocal(){
   let product;
@@ -79,20 +81,20 @@ function getLocal(){
 
 function addToModal(){
   let product = getLocal()
+  buy.innerHTML = ""
   product.forEach(el => {
-    fetch("https://fakestoreapi.com/products")
+    fetch(`https://fakestoreapi.com/products/${el}`)
     .then((response) => response.json())
     .then((element) => {
-      element.forEach(e => {
-        if(el == e.id){
-          let korb = document.createElement("div")
+      let korb = document.createElement("div")
           korb.classList.add("cart-item")
+          korb.id = element.id
           korb.innerHTML = `
           <div>
-          <span><img src="${e.image}" alt=""></span>
+          <span><img src="${element.image}" alt=""></span>
           <div class="cart-des">
-              <h4>${e.title}</h4>
-              <h5>${e.price}$</h5>
+              <h4>${element.title}</h4>
+              <h5>${element.price}$</h5>
           </div>
           <div class="counter">
               <span><i class="fa-solid fa-chevron-up"></i></span>
@@ -103,8 +105,8 @@ function addToModal(){
           </div>
           `
           buy.appendChild(korb)
-        }
-      });
     })
   });
 }
+
+addToModal()
