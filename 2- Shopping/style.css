@@ -145,8 +145,8 @@ section >.container >.products >.item> button{
     align-items: center;
     border-radius: 15px;
     opacity: 0;
-    transition: ease-in-out 0.3s;
-    transform: translateY(-100vh);
+    transition: ease-in-out 0.5s;
+    transform: translatex(+100vh);
     box-shadow: 0 10px 120px rgba(0, 0, 0, 0.07);
     overflow-y: scroll;
 }
