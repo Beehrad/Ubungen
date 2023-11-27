@@ -7,6 +7,7 @@ const sub = document.querySelector(".addtocart")
 const buy = document.querySelector(".cart-item")
 
 confirmCard.addEventListener("click", closeModal);
+backdrop.addEventListener("click", closeModal);
 
 
 card.addEventListener("click", showModal);
@@ -16,12 +17,12 @@ products.addEventListener("click" , addToCard)
 function showModal() {
   backdrop.style.display = "flex";
   modal.style.opacity = "1";
-  modal.style.transform = "translateY(0vh)";
+  modal.style.transform = "translatey(0vh)";
 }
 function closeModal() {
   backdrop.style.display = "none";
   modal.style.opacity = "0";
-  modal.style.transform = "translateY(-100vh)";
+  modal.style.transform = "translatey(-100vh)";
 }
 
 function onLoad(){
@@ -59,27 +60,61 @@ function addToCard(e){
     // product.price = price
     addToLocal(id)
   }
-
-  let korb = document.createElement("div")
-  korb.classList.add("cart-item")
-  korb.innerHTML = `
-  <div>
-  <span><img src="${product.image}" alt=""></span>
-  <div class="cart-des">
-      <h4>${product.title}</h4>
-      <h5>${product.price}$</h5>
-  </div>
-  <div class="counter">
-      <span><i class="fa-solid fa-chevron-up"></i></span>
-      <p>1</p> 
-      <span><i class="fa-solid fa-chevron-down"></i></span>       
-  </div>
-  <span><i class="fa-solid fa-trash"></i></span>
-  </div>
-  `
-  buy.appendChild(korb)
 }
 
+function addToModal(){
+  let product = getLocal()
+  product.forEach(el => {
+    fetch("https://fakestoreapi.com/products")
+    .then((response) => response.json())
+    .then((element) => {
+      element.forEach(e => {
+        if(el == e.id){
+          let korb = document.createElement("div")
+          korb.classList.add("cart-item")
+          korb.innerHTML = `
+          <div>
+          <span><img src="${e.image}" alt=""></span>
+          <div class="cart-des">
+              <h4>${e.title}</h4>
+              <h5>${e.price}$</h5>
+          </div>
+          <div class="counter">
+              <span><i class="fa-solid fa-chevron-up"></i></span>
+              <p>1</p> 
+              <span><i class="fa-solid fa-chevron-down"></i></span>       
+          </div>
+          <span><i class="fa-solid fa-trash"></i></span>
+          </div>
+          `
+          buy.appendChild(korb)
+        }
+      });
+    })
+  });
+}
+addToModal()
+
+// function addToKorb(e){
+//   let korb = document.createElement("div")
+//   korb.classList.add("cart-item")
+//   korb.innerHTML = `
+//   <div>
+//   <span><img src="${e.image}" alt=""></span>
+//   <div class="cart-des">
+//       <h4>${e.title}</h4>
+//       <h5>${e.price}$</h5>
+//   </div>
+//   <div class="counter">
+//       <span><i class="fa-solid fa-chevron-up"></i></span>
+//       <p>1</p> 
+//       <span><i class="fa-solid fa-chevron-down"></i></span>       
+//   </div>
+//   <span><i class="fa-solid fa-trash"></i></span>
+//   </div>
+//   `
+//   buy.appendChild(korb)
+// }
 
 function addToLocal(id){
   let product = getLocal()
