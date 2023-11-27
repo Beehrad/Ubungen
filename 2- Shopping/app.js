@@ -12,6 +12,7 @@ backdrop.addEventListener("click", closeModal);
 
 card.addEventListener("click", showModal);
 document.addEventListener("DOMContentLoaded", onLoad)
+document.addEventListener("DOMContentLoaded" , addToModal)
 products.addEventListener("click" , addToCard)
 
 function showModal() {
@@ -48,18 +49,32 @@ function onLoad(){
 }
 
 function addToCard(e){
-  // console.log(e.target)
   let target = e.target
   let product = {}
   if(target.className == "addtocart"){
     let parent = target.parentElement
     let id = parent.id
-    // product.title = parent.children[0].innerHTML
-    // product.image = parent.children[1].src
-    // let price = Number(parent.children[2].children[0].textContent.split("$")[0])
-    // product.price = price
+
     addToLocal(id)
   }
+}
+
+function addToLocal(id){
+  let product = getLocal()
+  if(!product.includes(id)){
+  product.push(id)
+  }
+  localStorage.setItem("product" , JSON.stringify(product))
+}
+
+function getLocal(){
+  let product;
+  if(localStorage.getItem("product") === null){
+    product = []
+  }else{
+    product = JSON.parse(localStorage.getItem("product"))
+  }
+  return product
 }
 
 function addToModal(){
@@ -92,44 +107,4 @@ function addToModal(){
       });
     })
   });
-}
-addToModal()
-
-// function addToKorb(e){
-//   let korb = document.createElement("div")
-//   korb.classList.add("cart-item")
-//   korb.innerHTML = `
-//   <div>
-//   <span><img src="${e.image}" alt=""></span>
-//   <div class="cart-des">
-//       <h4>${e.title}</h4>
-//       <h5>${e.price}$</h5>
-//   </div>
-//   <div class="counter">
-//       <span><i class="fa-solid fa-chevron-up"></i></span>
-//       <p>1</p> 
-//       <span><i class="fa-solid fa-chevron-down"></i></span>       
-//   </div>
-//   <span><i class="fa-solid fa-trash"></i></span>
-//   </div>
-//   `
-//   buy.appendChild(korb)
-// }
-
-function addToLocal(id){
-  let product = getLocal()
-  if(!product.includes(id)){
-  product.push(id)
-  }
-  localStorage.setItem("product" , JSON.stringify(product))
-}
-
-function getLocal(){
-  let product;
-  if(localStorage.getItem("product") === null){
-    product = []
-  }else{
-    product = JSON.parse(localStorage.getItem("product"))
-  }
-  return product
 }
