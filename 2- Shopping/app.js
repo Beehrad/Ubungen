@@ -31,7 +31,7 @@ function onLoad(){
   .then((element) =>{
     element.forEach(e => {
       UI += `
-      <div class="item">
+      <div id="${e.id}" class="item">
         <h6>${e.title}</h6>
         <img src="${e.image}" alt="">
         <div>
@@ -52,10 +52,12 @@ function addToCard(e){
   let product = {}
   if(target.className == "addtocart"){
     let parent = target.parentElement
-    product.title = parent.children[0].innerHTML
-    product.image = parent.children[1].src
-    let price = Number(parent.children[2].children[0].textContent.split("$")[0])
-    product.price = price
+    let id = parent.id
+    // product.title = parent.children[0].innerHTML
+    // product.image = parent.children[1].src
+    // let price = Number(parent.children[2].children[0].textContent.split("$")[0])
+    // product.price = price
+    addToLocal(id)
   }
 
   let korb = document.createElement("div")
@@ -76,4 +78,23 @@ function addToCard(e){
   </div>
   `
   buy.appendChild(korb)
+}
+
+
+function addToLocal(id){
+  let product = getLocal()
+  if(!product.includes(id)){
+  product.push(id)
+  }
+  localStorage.setItem("product" , JSON.stringify(product))
+}
+
+function getLocal(){
+  let product;
+  if(localStorage.getItem("product") === null){
+    product = []
+  }else{
+    product = JSON.parse(localStorage.getItem("product"))
+  }
+  return product
 }

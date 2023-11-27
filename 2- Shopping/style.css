@@ -133,11 +133,11 @@ section >.container >.products >.item> button{
 
 .modal{
     width: 300px;
-    min-height: 200px;
-    height: fit-content;
+    top: 0px;
+    right: 0px;
+    height: 100%;
     position: absolute;
     background-color: white;
-    margin-top: -210px;
     padding: 10px 20px;
     display: flex;
     flex-direction: column;
@@ -148,6 +148,7 @@ section >.container >.products >.item> button{
     transition: ease-in-out 0.3s;
     transform: translateY(-100vh);
     box-shadow: 0 10px 120px rgba(0, 0, 0, 0.07);
+    overflow-y: scroll;
 }
 
 .cart-item{
