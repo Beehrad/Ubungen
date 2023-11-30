@@ -79,5 +79,34 @@ function getLocal(){
   return product
 }
 
+function addToModal(){
+  let product = getLocal()
+  buy.innerHTML = ""
+  product.forEach(el => {
+    fetch(`https://fakestoreapi.com/products/${el}`)
+    .then((response) => response.json())
+    .then((element) => {
+      let korb = document.createElement("div")
+          korb.classList.add("cart-item")
+          korb.id = element.id
+          korb.innerHTML = `
+          <div>
+          <span><img src="${element.image}" alt=""></span>
+          <div class="cart-des">
+              <h4>${element.title}</h4>
+              <h5>${element.price}$</h5>
+          </div>
+          <div class="counter">
+              <span><i class="fa-solid fa-chevron-up"></i></span>
+              <p>1</p> 
+              <span><i class="fa-solid fa-chevron-down"></i></span>       
+          </div>
+          <span><i class="fa-solid fa-trash"></i></span>
+          </div>
+          `
+          buy.appendChild(korb)
+    })
+  });
+}
 
 addToModal()
