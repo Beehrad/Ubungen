@@ -37,12 +37,17 @@ const App = () => {
     }
   });
 
+  const removeStory = (id)=>{
+    const neuStories = story.filter((item)=> item.id !== id)
+    setStory(neuStories)
+  }
+
   return (
     <div>
       <h1>Hello {name}</h1>
       <Name setName={setName} />
       <Search id="search" label="Search" setSearchTerm={setSearchTerm} value={searchTerm}/>
-      <Stories searchStories={searchStories} />
+      <Stories searchStories={searchStories} removeStory={removeStory}/>
     </div>
   );
 };
