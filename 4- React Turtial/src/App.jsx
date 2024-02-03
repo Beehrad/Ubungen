@@ -41,7 +41,7 @@ const App = () => {
     <div>
       <h1>Hello {name}</h1>
       <Name setName={setName} />
-      <Search setSearchTerm={setSearchTerm}  searchTerm={searchTerm}/>
+      <Search id="search" label="Search" setSearchTerm={setSearchTerm} value={searchTerm}/>
       <Stories searchStories={searchStories} />
     </div>
   );
