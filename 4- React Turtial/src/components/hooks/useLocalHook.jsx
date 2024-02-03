@@ -1,22 +1,13 @@
 import React, { useEffect, useState } from 'react'
 
-export default function useLocalHook(key , value) {
-  
-  const [local, setLocal] = useState(()=>{
-    const localStr = localStorage.getItem(key);
-    return localStr ? JSON.parse(localStr) : value;
-  })
+export default function useLocalHook(key , initialState) {
+  // get value from LocalStorage and save at State(value)
+  const [value , setValue] = useState(localStorage.getItem(key) || initialState);
 
+  // save updated State in our key in Localstorage with Usestate
   useEffect(()=>{
-    localStorage.setItem(key , JSON.stringify(local))
-  },[local])
+    localStorage.setItem(key , value)
+  }, [value , key])
 
-
-  return [local , setLocal]
+  return [value , setValue]
 }
-
-
-function behrad(){
-  return true
-}
-const behradfn = behrad()

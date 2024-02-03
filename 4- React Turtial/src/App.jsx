@@ -6,7 +6,7 @@ import useLocalHook from "./components/hooks/useLocalHook";
 
 const App = () => {
   const [name, setName] = useState("Behrad");
-  const [searchTerm, setSearchTerm] = useState(localStorage.getItem("search") || "");
+  const [searchTerm, setSearchTerm] = useLocalHook("search" , '')
 
   const [story, setStory] = useState([
     {
@@ -30,9 +30,6 @@ const App = () => {
       city: "booshehr",
     },
   ]);
-  useEffect(()=>{
-    localStorage.setItem("search" , searchTerm)
-  },[searchTerm])
 
   const searchStories = story.filter((item) => {
     if (item.title.includes(searchTerm)) {
