@@ -4,41 +4,49 @@ import Stories from "./components/Stories";
 import Name from "./components/Name";
 import useLocalHook from "./components/hooks/useLocalHook";
 
+const storiesReducer = (state, action) => {
+
+  switch (action.type) {
+    case "SET_STORY":
+      return action.payload;
+    case "Remove_Story":
+      const filterdState = state.filter((story)=> story.title === action.payload);
+      return filterdState;
+    default:
+      return state;
+  }
+};
+
+const inititalValue = [
+  {
+    id: 1,
+    title: "car",
+    city: "bandar",
+  },
+  {
+    id: 2,
+    title: "maschin",
+    city: "tehran",
+  },
+  {
+    id: 3,
+    title: "wohnung",
+    city: "ahvaz",
+  },
+  {
+    id: 4,
+    title: "motor",
+    city: "booshehr",
+  },
+]
+
 const App = () => {
   const [name, setName] = useState("Behrad");
   const [searchTerm, setSearchTerm] = useLocalHook("search", "");
 
-  const storiesReducer = (state, action) => {
-    switch (action.type) {
-      case "SET_STORY":
-        return action.payload;
-      default:
-        return state;
-    }
-  };
 
-  const [story, dispatchedStories] = useReducer(storiesReducer, [
-    {
-      id: 1,
-      title: "car",
-      city: "bandar",
-    },
-    {
-      id: 2,
-      title: "maschin",
-      city: "tehran",
-    },
-    {
-      id: 3,
-      title: "wohnung",
-      city: "ahvaz",
-    },
-    {
-      id: 4,
-      title: "motor",
-      city: "booshehr",
-    },
-  ]);
+
+  const [story, dispatchedStories] = useReducer(storiesReducer, inititalValue );
   // const [story, setStory] = useState([
   //   {
   //     id: 1,
@@ -76,6 +84,7 @@ const App = () => {
 
   return (
     <div>
+      <button onClick={()=> dispatchedStories({type: "Remove_Story" , payload : "car"})}> Removendispatch</button>
       <h1>Hello {name}</h1>
       <Name setName={setName} />
       <Search
