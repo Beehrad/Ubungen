@@ -100,3 +100,7 @@ function clearLocal() {
   list.innerHTML = "";
   localStorage.clear();
 }
+
+
+let beehrad = 68 / 6
+console.log(beehrad)

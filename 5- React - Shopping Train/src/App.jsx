@@ -23,6 +23,10 @@ function App() {
       .then((pro) => console.log(pro));
     }, [product]);
 
+    const kategorie = fetch("https://fakestoreapi.com/products/categories")
+    .then((response) => response.json)
+    .then((kat) =>console.log(kat))
+
   return (
     <div className="container">
       <Header />
