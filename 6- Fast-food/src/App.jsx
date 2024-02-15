@@ -34,6 +34,15 @@ function App() {
   const filterItems = (categoryId)=>{
     fetchData(categoryId);
   }
+  
+  const searchItems async(term) =>{
+    setLoading(true);
+    const response = await API.get(
+      `FastFood/search/${term} ? "?term=` term : ""
+    );
+    setLoading(false);
+    setFastFoods(response)
+  }
 
   return (
     <div className="wrapper bg-faded-dark">
