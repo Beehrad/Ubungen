@@ -3,7 +3,7 @@ import API from "../axios";
 import Loading from "../Loading/loading";
 import SearchBar from "../SearchBar/searchBar";
 
-export default function CategoryList({ filterItems }) {
+export default function CategoryList({ filterItems , children}) {
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([]);
 
@@ -43,7 +43,7 @@ export default function CategoryList({ filterItems }) {
             );
           })}
         </ul>
-        <SearchBar />
+        {children}
       </div>
     );
   };

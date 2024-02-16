@@ -6,6 +6,7 @@ import axios from "axios";
 import API from "./axios";
 import Loading from "./Loading/loading";
 import FastFoodList from "./FastFoodList/fastFoodList";
+import SearchBar from "./SearchBar/searchBar";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -35,10 +36,10 @@ function App() {
     fetchData(categoryId);
   }
   
-  const searchItems async(term) =>{
+  const searchItems = async(term) =>{
     setLoading(true);
     const response = await API.get(
-      `FastFood/search/${term} ? "?term=` term : ""
+      `FastFood/search/${term ? "?term=" + term : ""}`
     );
     setLoading(false);
     setFastFoods(response)
@@ -47,7 +48,9 @@ function App() {
   return (
     <div className="wrapper bg-faded-dark">
       <Header />
-      <CategoryList filterItems={filterItems} />
+      <CategoryList filterItems={filterItems} >
+          <SearchBar searchItems={searchItems} />
+      </CategoryList>
       <div className="container mt-4">
         {renderContent()}
       </div>
