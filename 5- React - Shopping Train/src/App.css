@@ -10,6 +10,8 @@ body{
 .container{
   margin: auto;
   width: 80%;
+  display: flex;
+  flex-wrap: wrap;
 }
 .header{
   width: 100%;
@@ -78,11 +80,17 @@ li:hover{
 .product{
   display: flex;
   flex-direction: column;
-  width: 250px;
+  width: 300px;
   border: 1px solid red;
-  height: 300px;
+  height: 380px;
   align-items: center;
   justify-content: center;
+  margin: 20px;
+  justify-content: space-between;
+}
+
+.product>img{
+  height: 280px;
 }
 
 .info{
@@ -104,4 +112,11 @@ li:hover{
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 50px;
+}
+
+.productItems{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 80%;
+  margin: auto;
 }

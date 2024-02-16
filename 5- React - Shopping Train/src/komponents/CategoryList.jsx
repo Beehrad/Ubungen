@@ -7,11 +7,10 @@ export default function CategoryList() {
       .then((response) => response.json())
       .then((data) => setCategory(data));
   }, []);
-  console.log(categories);
 
   const renderContent = () => {
     if (categories.length === 0) {
-      return <span>loading ...</span>;
+      return <span className="container">loading ...</span>;
     } else {
       return (
         <ul>
