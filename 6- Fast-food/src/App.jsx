@@ -32,7 +32,7 @@ function App() {
         <div className="alert alert-warning text-center">
           برای کلیدواژه فوق هیچ آیتمی یافت نشد
         </div>
-        <img className="mx-auto mt5 d-block" src={notfound}/>
+        <img className="mx-auto mt5 d-block fade-in-horiz" src={notfound}/>
         </>
       )
     }
