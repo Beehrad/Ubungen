@@ -1,36 +1,15 @@
 import { useEffect, useReducer, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
-import Header from "./assets/komponents/Header";
-import Content from "./assets/komponents/Content";
+import Header from "./komponents/Header";
+import CategoryList from "./komponents/CategoryList";
 
-const productReducer = (state, action) => {
-  switch (action.type) {
-    case "SET_Value":
-      return action.payload;
-    default:
-      state;
-  }
-};
 
 function App() {
-  const [product , dispachtedProduct] = useReducer(productReducer , [])
-
-  useEffect(() => {
-    const neu =fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => response.json)
-      .then((pro) => console.log(pro));
-    }, [product]);
-
-    const kategorie = fetch("https://fakestoreapi.com/products/categories")
-    .then((response) => response.json)
-    .then((kat) =>console.log(kat))
-
   return (
-    <div className="container">
+    <div>
       <Header />
-      <Content />
+      <CategoryList />
+      {/* <Content /> */}
     </div>
   );
 }

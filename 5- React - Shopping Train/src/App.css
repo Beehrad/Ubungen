@@ -1,6 +1,7 @@
 body{
   background-color: beige;
 }
+
 *{
   margin: 0;
   padding: 0;
@@ -8,50 +9,55 @@ body{
 
 .container{
   margin: auto;
-  position: fixed;
-  width: 100%;
-  top: 0;
+  width: 80%;
 }
 .header{
-  background-color: gray;
   width: 100%;
   text-align: center;
-  padding: 20px;
-  top: 0;
+  /* padding: 20px; */
+  background-image: url(./images/IMG_2683.JPG);
+  background-size: cover;
+  display: flex;
+  justify-content: start;
+  color: white;
+  height: 150px;
+  font-size: 2.5rem;
+  text-align: start;
 }
 
-.nav{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  font-size: 1.2rem;
-  /* justify-content: space-between; */
-  padding: 20px;
+.category{
+  display: flex;
   align-items: center;
+  font-size: 1.2rem;
+  padding: 20px;
+  width: 80%;
+  background-color: white;
+  border-radius: 10px;
+  margin: auto;
+  height: 80px;
+  position: relative;
+  top: -30px;
+  padding: 10px;
 }
 
 ul{
   display: flex;
   justify-content: flex-start;
-  left: 0;
+  align-items: center;
 }
 
 li{
   list-style: none;
   margin: 10px;
-  border: 1px solid gray;
-  border-radius: 8px;
-  width: 80px;
   align-items: center;
   justify-content: center;
   text-align: center;
   cursor: pointer;
-  background-color: gray;
   color: #213547;
 }
 
 li:hover{
-  background-color: #213547;
-  color: aliceblue;
+  color: gray;
 }
 
 .fa-bag-shopping{
