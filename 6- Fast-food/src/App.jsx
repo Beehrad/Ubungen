@@ -7,6 +7,7 @@ import API from "./axios";
 import Loading from "./Loading/loading";
 import FastFoodList from "./FastFoodList/fastFoodList";
 import SearchBar from "./SearchBar/searchBar";
+import notfound from "./assets/images/404.png";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -24,6 +25,16 @@ function App() {
   const renderContent = ()=>{
     if(loading){
       return <Loading theme="dark" />
+    }
+    if (fastFoodsItems.length === 0){
+      return(
+        <>
+        <div className="alert alert-warning text-center">
+          برای کلیدواژه فوق هیچ آیتمی یافت نشد
+        </div>
+        <img className="mx-auto mt5 d-block" src={notfound}/>
+        </>
+      )
     }
     return <FastFoodList fastFoodsItems={fastFoodsItems} />
   }
