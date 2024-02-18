@@ -1,30 +1,50 @@
 import { useEffect, useReducer, useState } from "react";
+import Header from "./components/Header/Header";
+import CategoryList from "./components/CategoryList";
+import ProductList from "./components/ProductList";
 import "./App.css";
-import Header from "./komponents/Header";
-import CategoryList from "./komponents/CategoryList";
-import ProductItems from "./komponents/productItems";
 
 function App() {
-  const [products,setProduct] = useState([]);
+  const [products, setProduct] = useState([]);
+  const [selectCategory, setSelectCategory] = useState("");
+  const [filterItems,setFilterItems] = useState(products);
   
-  useEffect(()=>{
-    fetch("https://api.escuelajs.co/api/v1/products")
-    .then((response)=> response.json())
-    .then((data)=> setProduct(data))
-  },[])
-  
-  const renderContent = ()=>{
-    if(products.length ===0){
-      return <h5 className="container">loading ...</h5>
-    }else{
-     return <ProductItems products={products} />
+  useEffect(() => {
+    const fetchBe = async()=>{
+      const lists = await fetch("https://fakestoreapi.com/products");
+      const res = await lists.json();
+      setProduct(res);
+      setFilterItems(res);
     }
-  }
+    fetchBe();
+  }, []);
   
+
+  useEffect(()=>{
+    if(selectCategory !== ""){
+    setFilterItems([]);
+    products.filter((item) => {
+        if (item.category === selectCategory) {
+          setFilterItems((items)=> [...items,item]);
+        }
+      });
+    }else{
+      setFilterItems(products)
+    }
+  },[selectCategory])
+  
+
+  const renderContent = () => {
+    if (filterItems.length === 0 || products.length === 0 ) {
+      return <p className="container">Loading...</p>;
+    }
+    return <ProductList products={filterItems} />;
+  };
+
   return (
-    <div>
+    <div className="bg-slate-100">
       <Header />
-      <CategoryList />
+      <CategoryList setSelectCategory={setSelectCategory} />
       {renderContent()}
     </div>
   );
