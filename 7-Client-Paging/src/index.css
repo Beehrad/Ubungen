@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+li{
+    list-style: none;
+    background-color: rgb(235, 235, 235);
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.active{
+    background-color: rgb(180, 137, 56);
+    box-shadow: 0px 2px 10px black;
+    color: antiquewhite;
+}

@@ -6,7 +6,7 @@ import Pagination from "./components/Pagination";
 const url =
   "https://react-mini-projects-api.classbon.com/Programmer/programmers";
 function App() {
-  const [loading, data] = UsePaginatedFetch(url, 3);
+  const [loading, data] = UsePaginatedFetch(url, 2);
   const [page, setPage] = useState(1);
   const [programmers, setProgrammers] = useState([]);
 
