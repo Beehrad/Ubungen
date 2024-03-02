@@ -2,11 +2,11 @@ import React from "react";
 import { useThemeContext } from "../Context";
 
 export default function Header() {
-  const theme = useThemeContext();
-  const darkMode = theme.darkMode;
+  const {darkMode , setDarkMode} = useThemeContext();
+  // const darkMode = theme.darkMode;
 
   const changeTheme = ()=>{
-    theme.setDarkMode(!darkMode);
+    setDarkMode(!darkMode);
   }
   return (
     <header
