@@ -3,7 +3,6 @@ import { useContext } from "react";
 import cartItems from "./data";
 import reducer from "./reducer"
 
-
 const CartContext = createContext();
 
 const initialState = {
@@ -15,7 +14,7 @@ const initialState = {
 
 const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  
+
   return (
     <CartContext.Provider value={{ ...state, dispatch }}>
       {children}

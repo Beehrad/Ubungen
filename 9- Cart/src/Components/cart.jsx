@@ -5,7 +5,6 @@ import { RiShoppingCartLine } from "react-icons/ri";
 
 const Cart = () => {
   const { cart, dispatch } = UseCartContext();
-  console.log(cart)
 
   let renderedContent = (
     <>
@@ -35,6 +34,7 @@ const Cart = () => {
       </>
     );
   }
+
   return (
     <>
       <div className="page-title-overlap bg-dark pt-1">
