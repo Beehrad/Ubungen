@@ -3,10 +3,13 @@ import { RiCloseCircleLine } from "react-icons/ri";
 import { UseCartContext } from "../context";
 
 const CartItem = ({ id, img, title, price, quantity }) => {
-  const { dispatch } = UseCartContext();
+  const {total , dispatch } = UseCartContext();
   const [que, setQue] = useState(quantity);
 
   useEffect(()=>{
+    if(que < 0){
+      setQue(0)
+    }
     dispatch({type : "ADDQUA" , payload : {id , que}})
   },[que])
 
@@ -28,7 +31,7 @@ const CartItem = ({ id, img, title, price, quantity }) => {
           className="form-control"
           type="number"
           value={que}
-          onChange={(e) => setQue(e.target.value)}
+          onChange={(e)=> setQue(e.target.value)}
         />
         <button
           className="btn btn-link text-danger pe-0"
