@@ -6,4 +6,12 @@ const sumTotal = (products)=>{
     return newTotal
 }
 
-export default sumTotal
+const sumAmount = (products)=>{
+    let newAmount = 0
+    products.forEach(item => {
+        newAmount += Number(item.quantity)
+    });
+    return newAmount
+}
+
+export{sumAmount , sumTotal}

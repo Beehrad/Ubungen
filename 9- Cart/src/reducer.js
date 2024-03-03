@@ -1,5 +1,5 @@
 import Cart from "./Components/cart";
-import sumTotal from "./sumTotal";
+import  { sumAmount , sumTotal } from "./sumTotal";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -10,7 +10,8 @@ const reducer = (state, action) => {
       return {
         ...state,
         cart: filteredCart,
-        total : sumTotal(filteredCart)
+        total : sumTotal(filteredCart),
+        amount : sumAmount(filteredCart),
       };
     case "ADDQUA":
       const newq = state.cart.map((item) => {
@@ -23,7 +24,7 @@ const reducer = (state, action) => {
         ...state,
         cart: newq,
         total: sumTotal(newq),
-        amount : 0
+        amount : sumAmount(newq)
       };
   }
 };
