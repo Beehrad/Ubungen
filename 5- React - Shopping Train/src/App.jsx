@@ -3,17 +3,20 @@ import Header from "./components/Header/Header";
 import CategoryList from "./components/CategoryList";
 import ProductList from "./components/ProductList";
 import "./App.css";
+import { useProductContext } from "./productContext";
 
 function App() {
-  const [products, setProduct] = useState([]);
+  // const [products, setProduct] = useState([]);
+  const {state , dispatch} = useProductContext();
+  const [filterItems,setFilterItems] = useState(state.data);
   const [selectCategory, setSelectCategory] = useState("");
-  const [filterItems,setFilterItems] = useState(products);
+  
   
   useEffect(() => {
     const fetchBe = async()=>{
       const lists = await fetch("https://fakestoreapi.com/products");
       const res = await lists.json();
-      setProduct(res);
+      dispatch({type : "NEW_STATE" , payload: res})
       setFilterItems(res);
     }
     fetchBe();
@@ -23,19 +26,19 @@ function App() {
   useEffect(()=>{
     if(selectCategory !== ""){
     setFilterItems([]);
-    products.filter((item) => {
+    state.data.filter((item) => {
         if (item.category === selectCategory) {
           setFilterItems((items)=> [...items,item]);
         }
       });
     }else{
-      setFilterItems(products)
+      setFilterItems(state.data)
     }
   },[selectCategory])
   
 
   const renderContent = () => {
-    if (filterItems.length === 0 || products.length === 0 ) {
+    if (filterItems.length === 0 || state.data.length === 0 ) {
       return <p className="container">Loading...</p>;
     }
     return <ProductList products={filterItems} />;
